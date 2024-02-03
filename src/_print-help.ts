@@ -3,6 +3,6 @@ export function printHelp() {
   console.log("\nOptional flags:");
   console.log("  -h, --help                Display this help and exit");
   console.log(
-    "  -e, --entryPath           Path to entrypoint; defaults to 'src/main.ts'"
+    "  -e, --entryFile           Entrypoint filename; defaults to 'main.ts'"
   );
 }

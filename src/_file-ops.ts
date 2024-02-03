@@ -16,14 +16,20 @@ if (ENV === "prod") {
   parentPath = `${Deno.cwd()}/sandbox`;
 }
 
-function writeVsCodeSettings() {
+export function fileOps(entryFilename: string) {
+  /** vscode settings */
   Deno.mkdirSync(`${parentPath}/.vscode`);
   Deno.copyFileSync(
     `${Deno.cwd()}/src/assets/vscode-settings.json`,
     `${parentPath}/.vscode/settings.json`
   );
-}
 
-export function fileOps() {
-  writeVsCodeSettings();
+  /** create src/ */
+  Deno.mkdirSync(`${parentPath}/src`);
+
+  /** create deps.ts */
+  Deno.writeTextFileSync(`${parentPath}/src/deps.ts`, "");
+
+  /** create entrypoint file */
+  Deno.writeTextFileSync(`${parentPath}/src/${entryFilename}`, "");
 }

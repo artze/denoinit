@@ -6,13 +6,13 @@ import { printHelp } from "@src/_print-help.ts";
 function main(input: string[]) {
   const parsedArgs = parseArgs(input, {
     boolean: ["help"],
-    string: ["entryPath"],
+    string: ["entryFile"],
     alias: {
-      entryPath: "e",
+      entryFile: "e",
       help: "h",
     },
     default: {
-      entryPath: "src/main.ts",
+      entryFile: "main.ts",
     },
   });
 
@@ -21,7 +21,7 @@ function main(input: string[]) {
     Deno.exit(0);
   }
 
-  fileOps();
+  fileOps(parsedArgs.entryFile);
 }
 
 main(Deno.args);
