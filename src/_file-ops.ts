@@ -1,3 +1,5 @@
+import { denoJsonContent } from "@src/assets/deno-json.ts";
+
 const environment = ["dev", "prod"] as const;
 type Environment = typeof environment[number];
 
@@ -32,4 +34,13 @@ export function fileOps(entryFilename: string) {
 
   /** create entrypoint file */
   Deno.writeTextFileSync(`${parentPath}/src/${entryFilename}`, "");
+
+  /** create deno.json */
+  denoJsonContent.tasks.dev = denoJsonContent.tasks.dev.concat(
+    ` src/${entryFilename}`
+  );
+  Deno.writeTextFileSync(
+    `${parentPath}/deno.json`,
+    JSON.stringify(denoJsonContent, null, 2)
+  );
 }
