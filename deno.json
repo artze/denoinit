@@ -3,9 +3,9 @@
     "@src/": "./src/"
   },
   "tasks": {
-    "dev": "ENV=dev deno run --lock=deno.lock --allow-env=ENV --allow-read=./ --allow-write=./sandbox/ src/main.ts",
+    "dev": "ENV=dev deno run --lock=deno.lock --allow-env=ENV --allow-write=./sandbox/ src/main.ts",
     "dl-deps:update-lock": "deno cache --lock=deno.lock --lock-write src/deps.ts",
     "dl-deps:reload": "deno cache --reload --lock=deno.lock src/deps.ts",
-    "make-linux": "deno compile --config deno.json --lock=lock.json --target x86_64-unknown-linux-gnu --output bin/denoinit --allow-env=ENV --allow-read=./ --allow-write=./ src/main.ts"
+    "make-linux": "deno compile --config deno.json --lock=lock.json --target x86_64-unknown-linux-gnu --output bin/denoinit --allow-env=ENV --allow-write=./ src/main.ts"
   }
 }

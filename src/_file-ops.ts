@@ -5,9 +5,9 @@ const ENV = Deno.env.get("ENV");
 
 let parentPath: string;
 if (ENV === "dev") {
-  parentPath = `${Deno.cwd()}/sandbox`;
+  parentPath = "./sandbox";
 } else {
-  parentPath = `${Deno.cwd()}`;
+  parentPath = ".";
 }
 
 export function fileOps(entryFilename: string) {
