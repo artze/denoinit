@@ -1,4 +1,5 @@
 import { denoJsonContent } from "@src/assets/deno-json.ts";
+import { vscodeSettingsContent } from "@src/assets/vscode-settings.ts";
 
 const ENV = Deno.env.get("ENV");
 
@@ -12,9 +13,9 @@ if (ENV === "dev") {
 export function fileOps(entryFilename: string) {
   /** vscode settings */
   Deno.mkdirSync(`${parentPath}/.vscode`);
-  Deno.copyFileSync(
-    `${Deno.cwd()}/src/assets/vscode-settings.json`,
-    `${parentPath}/.vscode/settings.json`
+  Deno.writeTextFileSync(
+    `${parentPath}/.vscode/settings.json`,
+    JSON.stringify(vscodeSettingsContent, null, 2)
   );
 
   /** create src/ */
