@@ -1,21 +1,12 @@
 import { denoJsonContent } from "@src/assets/deno-json.ts";
 
-const environment = ["dev", "prod"] as const;
-type Environment = typeof environment[number];
-
-const rawEnv = environment.find((env) => env === Deno.env.get("ENV"));
-
-if (!rawEnv) {
-  throw new Error("Unexpected ENV value");
-}
-
-const ENV: Environment = rawEnv;
+const ENV = Deno.env.get("ENV");
 
 let parentPath: string;
-if (ENV === "prod") {
-  parentPath = `${Deno.cwd()}`;
-} else {
+if (ENV === "dev") {
   parentPath = `${Deno.cwd()}/sandbox`;
+} else {
+  parentPath = `${Deno.cwd()}`;
 }
 
 export function fileOps(entryFilename: string) {
