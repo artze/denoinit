@@ -22,6 +22,8 @@ function main(input: string[]) {
   }
 
   fileOps(parsedArgs.entryFile);
+
+  console.log("\nDone");
 }
 
 main(Deno.args);
